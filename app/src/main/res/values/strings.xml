@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProductivityTracker</string>
+    <string name="no_permissions">You have not granted the app the necessary permissions</string>
 </resources>
