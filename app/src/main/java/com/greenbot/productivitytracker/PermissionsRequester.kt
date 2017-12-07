@@ -6,19 +6,18 @@ import android.content.pm.PackageManager
 import android.support.v4.app.ActivityCompat
 import com.greenbot.productivitytracker.ui.MainActivity
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 /**
  * Created by gaurav.mishra on 06/12/17.
  */
-class PermissionsRequester(var activityWeakReference: WeakReference<Activity>) {
+class PermissionsRequester @Inject constructor(var activity: Activity) {
 
     val PERMISSIONS = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+    val activityWeakReference: WeakReference<Activity>
 
-    companion object {
-        fun newInstance(activity: Activity): PermissionsRequester {
-            val activityWeakReference = WeakReference(activity)
-            return PermissionsRequester(activityWeakReference)
-        }
+    init {
+        activityWeakReference = WeakReference<Activity>(activity)
     }
 
     fun hasPermissions(): Boolean {
