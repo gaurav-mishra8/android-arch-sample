@@ -11,9 +11,4 @@ import dagger.Provides
 @Module
 class MainActivityModule {
 
-    @Provides
-    fun providePermissionRequester(activity: MainActivity): PermissionsRequester {
-        return PermissionsRequester(activity)
-    }
-
 }

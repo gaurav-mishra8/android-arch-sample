@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * Created by gaurav.mishra on 06/12/17.
  */
-class PermissionsRequester @Inject constructor(var activity: Activity) {
+class PermissionsRequester @Inject constructor(var activity: MainActivity) {
 
     val PERMISSIONS = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
     val activityWeakReference: WeakReference<Activity>
