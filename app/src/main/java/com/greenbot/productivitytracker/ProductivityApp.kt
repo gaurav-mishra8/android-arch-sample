@@ -27,8 +27,8 @@ class ProductivityApp : Application(), HasActivityInjector {
 
         LeakCanary.install(this)
 
-        DaggerAppComponent.builder().
-                application(this).build()
+        DaggerAppComponent.builder()
+                .application(this).build()
                 .inject(this)
 
 

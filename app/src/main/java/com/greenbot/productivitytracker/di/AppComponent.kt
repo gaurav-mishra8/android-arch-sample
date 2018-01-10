@@ -1,5 +1,6 @@
 package com.greenbot.productivitytracker.di
 
+import android.arch.lifecycle.ViewModel
 import com.greenbot.productivitytracker.ProductivityApp
 import dagger.BindsInstance
 import dagger.Component
@@ -25,6 +26,5 @@ public interface AppComponent {
     }
 
     fun inject(app: ProductivityApp)
-
 
 }
