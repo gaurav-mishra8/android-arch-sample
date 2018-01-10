@@ -2,6 +2,7 @@ package com.greenbot.productivitytracker
 
 import android.Manifest
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MediatorLiveData
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Looper
@@ -11,7 +12,7 @@ import com.google.android.gms.location.*
 /**
  * Created by gaurav.mishra on 07/12/17.
  */
-class LocationLiveData(val context: Context) : LiveData<UserLocation>() {
+class LocationLiveData(val context: Context) : MediatorLiveData<UserLocation>() {
 
     val fusedLocationProvider: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(context) }
 
