@@ -32,15 +32,6 @@ class MainViewModel @Inject constructor() : ViewModel() {
             locationLiveData = LocationLiveData(context)
         }
 
-        database.userLocationDao().getUserLocationHistory().subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { t1, t2 ->
-
-                    Log.d("Filtered loc list ", " " + t1.filter { it.lat == 0.0 }.size);
-
-                }
-
-
         return locationLiveData
     }
 
