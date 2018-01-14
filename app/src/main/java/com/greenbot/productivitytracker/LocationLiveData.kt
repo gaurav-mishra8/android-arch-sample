@@ -1,18 +1,18 @@
 package com.greenbot.productivitytracker
 
 import android.Manifest
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
 import com.google.android.gms.location.*
+import javax.inject.Inject
 
 /**
  * Created by gaurav.mishra on 07/12/17.
  */
-class LocationLiveData(val context: Context) : MediatorLiveData<UserLocation>() {
+class LocationLiveData @Inject constructor(val context: Context) : MutableLiveData<UserLocation>() {
 
     val fusedLocationProvider: FusedLocationProviderClient by lazy { LocationServices.getFusedLocationProviderClient(context) }
 

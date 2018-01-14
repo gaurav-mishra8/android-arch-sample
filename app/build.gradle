@@ -48,7 +48,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
 
-    kapt 'com.android.databinding:compiler:3.1.0-alpha06'
+    kapt 'com.android.databinding:compiler:3.1.0-alpha08'
 
 
     //RxJava

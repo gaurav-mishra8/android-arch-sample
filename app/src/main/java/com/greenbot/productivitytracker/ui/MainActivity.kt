@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.pm.PackageManager
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -12,6 +13,7 @@ import com.greenbot.productivitytracker.LocationListener
 import com.greenbot.productivitytracker.PermissionsRequester
 import com.greenbot.productivitytracker.R
 import com.greenbot.productivitytracker.UserLocation
+import com.greenbot.productivitytracker.databinding.ActivityMainBinding
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -31,15 +33,16 @@ class MainActivity : AppCompatActivity(), LocationListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
-        mainViewModel.getLocation(this).observe(this, object : Observer<UserLocation> {
-            override fun onChanged(userLocation: UserLocation?) {
-                updateLocation(userLocation)
-            }
-        });
+        binding?.let {
+            it.viewModel = mainViewModel
+            it.setLifecycleOwner(this)
+        }
+
     }
 
     override fun onStart() {

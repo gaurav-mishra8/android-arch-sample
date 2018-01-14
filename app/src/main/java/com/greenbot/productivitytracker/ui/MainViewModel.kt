@@ -1,6 +1,7 @@
 package com.greenbot.productivitytracker.ui
 
 import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.util.Log
@@ -24,16 +25,8 @@ class MainViewModel @Inject constructor() : ViewModel() {
     @Inject
     lateinit var database: AppDatabase
 
-    lateinit var locationLiveData: MediatorLiveData<UserLocation>
-
-
-    fun getLocation(context: Context): MediatorLiveData<UserLocation> {
-        if (!::locationLiveData.isInitialized) {
-            locationLiveData = LocationLiveData(context)
-        }
-
-        return locationLiveData
-    }
+    @Inject
+    lateinit var locationLiveData: LocationLiveData
 
 
 }
