@@ -15,6 +15,7 @@ import com.greenbot.productivitytracker.R
 import com.greenbot.productivitytracker.UserLocation
 import com.greenbot.productivitytracker.databinding.ActivityMainBinding
 import dagger.android.AndroidInjection
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -31,7 +32,9 @@ class MainActivity : AppCompatActivity(), LocationListener {
     lateinit internal var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         AndroidInjection.inject(this)
+
         super.onCreate(savedInstanceState)
 
         val binding: ActivityMainBinding? = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -66,7 +69,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     }
 
     override fun updateLocation(userLocation: UserLocation?) {
-        Log.d("MainActivity", "found location ${userLocation?.latitude} and ${userLocation?.longitude}")
+        Timber.d("found location ${userLocation?.latitude} and ${userLocation?.longitude}")
     }
 
 }
